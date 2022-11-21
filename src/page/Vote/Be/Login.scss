@@ -1,0 +1,43 @@
+@import "../../../styles/global.scss";
+
+.logBg {
+  background-color: #f1f1f3;
+  height: 100vh;
+}
+
+.loginImg {
+  width:100%;
+  max-height: 350px;
+  object-fit: fill;
+  overflow: hidden;
+}
+
+.form-control > input {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+.r {
+  position: absolute;
+  top: 10%;
+  right: 0;
+}
+
+.footerPink {
+  position: absolute;
+  bottom: 0;
+  background-color: #e89d97;
+  height: 26px;
+  width: 100%;
+}

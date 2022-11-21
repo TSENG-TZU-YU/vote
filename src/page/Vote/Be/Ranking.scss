@@ -1,0 +1,51 @@
+@import "../../../styles/global.scss";
+.ranBg {
+  background-color: #f1f1f3;
+  // height: 100vh;
+}
+.btnColor {
+  color: white;
+  background-color: rgb(71, 44, 44);
+}
+.ranBg {
+  background-color: #e89d97;
+  height: 100vh;
+}
+.title {
+  background-color: #e89d97;
+  border-bottom: 3.5px solid #cc7f79;
+  & p {
+    color: #f1f1f3;
+  }
+}
+.line1 {
+  background-color: #e2f0e3;
+  border-bottom: 3px solid #cae1cc;
+}
+.line2 {
+  background-color: #e2f0e3;
+  border-bottom: 5px solid #e89d97;
+  & .textColor {
+    color: #8a8989;
+  }
+}
+
+.ww {
+  width: 73%;
+}
+.ww1 {
+  width: 90%;
+}
+.pp {
+  padding-left: 10%;
+}
+.footerYellow {
+  position: absolute;
+  bottom: 0;
+  background-color: #f7d277;
+  height: 26px;
+  width: 100%;
+}
+.textColor-red{
+  color: #C2182C;
+}
