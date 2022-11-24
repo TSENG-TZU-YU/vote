@@ -11,18 +11,12 @@ import Map from "./page/Map";
 
 function App() {
   const [name, setName] = useState("");
-  const [place, setPlace] = useState("");
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<Login name={name} setName={setName} place={place} />}
-        />
-        <Route
-          path="/vote"
-          element={<Vote name={name} place={place} setPlace={setPlace} />}
-        />
+        <Route path="/" element={<Login name={name} setName={setName} />} />
+        <Route path="/vote" element={<Vote name={name} />} />
         <Route path="/ranking" element={<Ranking />} />
         <Route path="/todo" element={<Todo />} />
         <Route path="/map" element={<Map />} />

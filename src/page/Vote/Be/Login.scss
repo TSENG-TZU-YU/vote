@@ -6,10 +6,10 @@
 }
 
 .loginImg {
-  width:100%;
-  max-height: 350px;
-  object-fit: fill;
-  overflow: hidden;
+  background-color: #e89e93;
+  object-fit: contain;
+  height: 33vh;
+  width: 100vw;
 }
 
 .form-control > input {

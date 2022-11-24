@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 // 圖檔
-import img2 from "../../../img/2.jpeg";
+import img2 from "../../../img/2.jpg";
 
 function Login({ name, setName, place }) {
   const [data, setData] = useState([]);
@@ -28,21 +28,21 @@ function Login({ name, setName, place }) {
 
   async function submit(e) {
     // e.preventDefault();
-    try {
-      let response = await axios.post("http://localhost:3001/api/vote/login", {
-        name: name,
-        place: place,
-      });
-      console.log(response.data);
-    } catch (err) {
-      console.log(err.response.data);
-    }
+    // try {
+    //   let response = await axios.post("http://localhost:3001/api/vote/login", {
+    //     name: name,
+    //     place: place,
+    //   });
+    //   console.log(response.data);
+    // } catch (err) {
+    //   console.log(err.response.data);
+    // }
   }
   return (
     <div className="logBg">
       <img
         className="loginImg "
-        src={require(`../../../img/2.jpeg`)}
+        src={require(`../../../img/2.jpg`)}
         alt={img2}
       />
 
