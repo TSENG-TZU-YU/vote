@@ -33,7 +33,8 @@ function Vote({ name }) {
 
   // 確認
   const [count, setCount] = useState("");
-  console.log("count", count);
+
+  const [susses, setSusses] = useState(false);
 
   // 搜尋：處理方法
   const handleSearch = (data, searchWord) => {
@@ -59,7 +60,7 @@ function Vote({ name }) {
     };
 
     votePlace1();
-  }, []);
+  }, [susses]);
 
   useEffect(() => {
     let newProducts = [...data];
@@ -88,7 +89,7 @@ function Vote({ name }) {
         "http://localhost:3001/api/vote/cnt/patch",
         ticket
       );
-
+      setSusses(false);
       console.log(response.data);
       Swal("成功", "已上傳票數", "success");
     } catch (err) {
@@ -101,9 +102,15 @@ function Vote({ name }) {
       <div className="d-flex justify-content-around pt-1 align-items-center title1 ">
         <div className="hight">
           <div className=" d-flex justify-content-between">
-            <h5>計票人 {name}</h5>
+            <h5>計票人 {localStorage.getItem("name")}</h5>
             <div className="d-flex ">
-              <button className="mx-1 submit" onClick={submit}>
+              <button
+                className="mx-1 submit"
+                onClick={() => {
+                  setSusses(true);
+                  submit();
+                }}
+              >
                 上傳投票數
               </button>
               {/* <h5 className="mx-1">結束</h5> */}
@@ -132,11 +139,7 @@ function Vote({ name }) {
       <div className="container1">
         {ticket.map((v, i) => {
           return (
-            <div
-              key={i}
-              className=" text-center list mt-2 pb-1 "
-            
-            >
+            <div key={i} className=" text-center list mt-2 pb-1 ">
               <div className=" mt-2 ">
                 <h5 className=" text-nowrap ">
                   {v.number}.{v.name}
@@ -157,20 +160,20 @@ function Vote({ name }) {
           );
         })}
       </div>
-      {/* <img className="img img-fluid footerImg"  src={require(`../../../img/1.png`)} alt={img1} /> */}
       <div className="footerPink"></div>
       {pop ? (
         <div className="pop">
           <div className="pop-inner ">
             <AiOutlineClose
+              className="close"
               onClick={() => {
                 setPop(false);
               }}
             />
-            <div className="form-group ">
+            <div className="form-group mt-3">
               <input
                 type="text"
-                className="form-control"
+                className="form-control "
                 placeholder="關鍵字搜尋"
                 value={searchWord}
                 onChange={(e) => setSearchWord(e.target.value)}
@@ -179,7 +182,10 @@ function Vote({ name }) {
               <div className="select">
                 {displayProducts.map((v, i) => {
                   return (
-                    <div key={v.id} className="d-flex select-h">
+                    <div
+                      key={v.id}
+                      className={`d-flex  ${v.vote === "0" ? "" : "select-s"}`}
+                    >
                       <div className="ms-2">{v.id}</div>
                       <div
                         className="ps-2 "
@@ -223,89 +229,5 @@ function Vote({ name }) {
     </div>
   );
 }
-
-//1
-// function Item({ seTicket, v, i, setInput, input, ticket }) {
-//   return (
-//     <div className="row align-items-center list mx-0">
-//       <div className="col-3">
-//         <h3 className="p text-nowrap text-center">{v.name}</h3>
-//         <div className="text-center">
-//           <h3 className="text-nowrap p">計票數</h3>
-//           <p className="text-nowrap p text-color count">{v.vote}</p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-//2
-// function Items({ seTicket, v, i, setInput, input }) {
-//   return (
-//     <div className="row align-items-center list mx-0">
-//       {/* <input
-//         type="number"
-//         className="col-3 me-md-5 "
-//         value={v.input || ""} //預設空值才不會報錯
-//         onChange={(e) => {
-//           setInput((v.input = e.target.value));
-//         }}
-//       /> */}
-
-//       <RiAddFill
-//         size="15"
-//         className="col px-0 voteBox mx-1"
-//         onClick={() => {
-//           seTicket((prev) => {
-//             const newState = [...prev];
-//             newState[i].vote = Number(v.vote) + 1;
-//             return newState;
-//           });
-//         }}
-//       />
-//       <input
-//         type="number"
-//         className="col"
-//         value={v.input || ""} //預設空值才不會報錯
-//         onChange={(e) => {
-//           setInput((v.input = e.target.value));
-//         }}
-//       />
-
-//       <AiOutlineMinus
-//         size="15"
-//         className="col px-0 voteBox mx-1"
-//         onClick={() => {
-//           seTicket((prev) => {
-//             const newState = [...prev];
-//             if (newState[i].vote > 0) {
-//               newState[i].vote = Number(v.vote) - 1;
-//             } else {
-//               newState[i].vote = Number(v.vote);
-//             }
-//             return newState;
-//           });
-//         }}
-//       />
-//       {/* 撈資料庫id 再送出 */}
-//       <button
-//         className="col voteBox mx-1 text-nowrap"
-//         onClick={() => {
-//           seTicket((current) => {
-//             const newState = [...current]; //淺拷貝陣列 初始型態是陣列
-//             newState[i].vote += Number(input);
-//             return newState;
-//           });
-//           setInput((v.input = ""));
-//         }}
-//       >
-//         送出
-//       </button>
-//       <div className="col text-center">
-//         <p className="text-nowrap p">計票數</p>
-//         <p className="text-nowrap p text-color count">{v.vote}</p>
-//       </div>
-//     </div>
-//   );
-// }
 
 export default Vote;

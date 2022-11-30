@@ -27,16 +27,7 @@ function Login({ name, setName, place }) {
   // }, []);
 
   async function submit(e) {
-    // e.preventDefault();
-    // try {
-    //   let response = await axios.post("http://localhost:3001/api/vote/login", {
-    //     name: name,
-    //     place: place,
-    //   });
-    //   console.log(response.data);
-    // } catch (err) {
-    //   console.log(err.response.data);
-    // }
+    localStorage.setItem("name", name);
   }
   return (
     <div className="logBg">
